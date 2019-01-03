@@ -16,6 +16,10 @@
     <asset:stylesheet src="responsive.css"/>
     <asset:stylesheet src="cart.css"/>
     <asset:stylesheet src="cart_responsive.css"/>
+    <asset:stylesheet src="malihu-custom-scrollbar/jquery.mCustomScrollbar.css"/>
+    <asset:stylesheet src="jquery-ui-1.12.1.custom/jquery-ui.css"/>
+    <asset:stylesheet src="categories.css"/>
+    <asset:stylesheet src="categories_responsive.css"/>
     <asset:link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
     <style>
@@ -44,7 +48,7 @@
             <nav class="main_nav">
                 <ul>
                     <li><a href="${createLink(controller: 'index',action:'index')}">home</a></li>
-                    <li><a href="categories.html">clothes</a></li>
+                    <li><a href="${createLink(controller: 'index', action:'articulos')}">clothes</a></li>
                     <sec:ifAllGranted roles='ROLE_ADMIN'>
                         <li><a href="${createLink(controller: 'index',action: 'admin')}">Administration</a></li>
                     </sec:ifAllGranted>
@@ -62,11 +66,15 @@
                     <a href="${createLink(controller: 'cart',action: 'index')}">
                         <div class="cart">
                             <asset:image src="shopping-bag.svg"/>
-                            <div class="cart_num_container">
-                                <div class="cart_num_inner">
-                                    <div class="cart_num">1</div>
-                                </div>
-                            </div>
+
+                                <sec:ifLoggedIn>
+                                    <div class="cart_num_container">
+                                        <div class="cart_num_inner">
+                                            <div class="cart_num">1</div>
+                                        </div>
+                                    </div>
+                                </sec:ifLoggedIn>
+
                         </div>
                     </a>
 
@@ -105,11 +113,11 @@
         </div>
         <nav class="menu_nav">
             <ul class="menu_mm">
-                <li class="menu_mm"><a href="#">home</a></li>
-                <li class="menu_mm"><a href="#">clothes</a></li>
-                <li class="menu_mm"><a href="#">accessories</a></li>
-                <li class="menu_mm"><a href="#">lingerie</a></li>
-                <li class="menu_mm"><a href="#">contact</a></li>
+                <li><a href="${createLink(controller: 'index',action:'index')}">home</a></li>
+                <li><a href="${createLink(controller: 'index', action:'articulos')}">clothes</a></li>
+                <sec:ifAllGranted roles='ROLE_ADMIN'>
+                    <li><a href="${createLink(controller: 'index',action: 'admin')}">Administration</a></li>
+                </sec:ifAllGranted>
             </ul>
         </nav>
     </div>
@@ -125,11 +133,11 @@
                     <div class="footer_logo"><a href="#">Wish</a></div>
                     <nav class="footer_nav">
                         <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li><a href="categories.html">clothes</a></li>
-                            <li><a href="categories.html">accessories</a></li>
-                            <li><a href="categories.html">lingerie</a></li>
-                            <li><a href="contact.html">contact</a></li>
+                            <li><a href="${createLink(controller: 'index',action:'index')}">home</a></li>
+                            <li><a href="${createLink(controller: 'index', action:'articulos')}">clothes</a></li>
+                            <sec:ifAllGranted roles='ROLE_ADMIN'>
+                                <li><a href="${createLink(controller: 'index',action: 'admin')}">Administration</a></li>
+                            </sec:ifAllGranted>
                         </ul>
                     </nav>
                     <div class="footer_social">
@@ -159,6 +167,15 @@
 <asset:javascript src="colorbox/jquery.colorbox-min.js"/>
 <asset:javascript src="custom.js"/>
 <asset:javascript src="cart_custom.js"/>
+<asset:javascript src="Isotope/isotope.pkgd.min.js"/>
+<asset:javascript src="malihu-custom-scrollbar/jquery.mCustomScrollbar.css"/>
+<asset:javascript src="jquery-ui-1.12.1.custom/jquery-ui.js"/>
+<asset:javascript src="categories_custom.js"/>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+</script>
 </body>
 </html>
 

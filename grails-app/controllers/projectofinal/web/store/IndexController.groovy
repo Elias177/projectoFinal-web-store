@@ -13,4 +13,8 @@ class IndexController {
 
     }
 
+    def articulos(){
+
+    }
+
 }

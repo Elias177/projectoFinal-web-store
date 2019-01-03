@@ -1,15 +1,17 @@
 package projectofinal.web.store
 
+import projectoFinal.web.store.User
+
 class Cliente {
 
-    int id
-    String foto
     String nombre
-    String correo
+    String apellido
     String telefono
     String direccion
     String fechaNacimiento
     String contrasena
+    User usuario
+    static hasMany = [carrito: Articulo]
 
     static constraints = {
         id nullable: true
@@ -17,5 +19,6 @@ class Cliente {
         direccion nullable: true
         fechaNacimiento nullable: true
         foto nullable: true
+        carrito nullable: true
     }
 }

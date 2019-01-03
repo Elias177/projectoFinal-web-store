@@ -23,7 +23,9 @@
     </ul>
 
     <div class="tab-content">
-
+        <g:if test='${flash.message}'>
+            <div class="alert alert-danger alert-block login_message">${flash.message}</div>
+        </g:if>
         <div id="login">
             <h1>Welcome Back!</h1>
 
