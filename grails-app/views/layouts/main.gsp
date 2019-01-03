@@ -16,6 +16,16 @@
     <asset:stylesheet src="responsive.css"/>
     <asset:stylesheet src="cart.css"/>
     <asset:stylesheet src="cart_responsive.css"/>
+    <asset:link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <style>
+    .avatar
+    {
+        cursor: pointer;
+    }
+    </style>
+
+
     <g:layoutHead/>
 </head>
 <body>
@@ -24,16 +34,20 @@
 
     <!-- Header -->
 
+    <form name="submitForm" method="POST" action="${createLink(controller: 'logout')}">
+        <input type="hidden" name="" value="">
+    </form>
+
     <header class="header">
         <div class="header_inner d-flex flex-row align-items-center justify-content-start">
             <div class="logo"><a href="#">Wish</a></div>
             <nav class="main_nav">
                 <ul>
-                    <li><a href="#">home</a></li>
+                    <li><a href="${createLink(controller: 'index',action:'index')}">home</a></li>
                     <li><a href="categories.html">clothes</a></li>
-                    <li><a href="categories.html">accessories</a></li>
-                    <li><a href="categories.html">lingerie</a></li>
-                    <li><a href="contact.html">contact</a></li>
+                    <sec:ifAllGranted roles='ROLE_ADMIN'>
+                        <li><a href="${createLink(controller: 'index',action: 'admin')}">Administration</a></li>
+                    </sec:ifAllGranted>
                 </ul>
             </nav>
             <div class="header_content ml-auto">
@@ -55,23 +69,22 @@
                             </div>
                         </div>
                     </a>
-                    <!-- Star -->
-                    <a href="#">
-                        <div class="star">
-                            <asset:image src="star.svg"/>
-                            <div class="star_num_container">
-                                <div class="star_num_inner">
-                                    <div class="star_num">0</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- Avatar -->
-                    <a href="#">
-                        <div class="avatar">
+
+
+                    <sec:ifNotLoggedIn>
+                        <!-- Avatar -->
+                        <a type="button" class="avatar" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="<sec:loggedInUserInfo field="username"/> <a class='btn btn-sm' href='${createLink(controller: 'login', action: 'auth')}'><i class='fa fa-sign-in-alt'>Login</i></a>">
                             <asset:image src="avatar.svg"/>
-                        </div>
-                    </a>
+                        </a>
+                    </sec:ifNotLoggedIn>
+
+                    <sec:ifLoggedIn>
+                        <!-- Avatar -->
+                        <a type="button" class="avatar" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="<sec:loggedInUserInfo field="username"/> <a class='btn btn-sm' HREF='javascript:document.submitForm.submit()'><i class='fa fa-sign-out-alt'>Logout</i></a>">
+                            <asset:image src="avatar.svg"/>
+                        </a>
+                    </sec:ifLoggedIn>
+
                 </div>
             </div>
 
