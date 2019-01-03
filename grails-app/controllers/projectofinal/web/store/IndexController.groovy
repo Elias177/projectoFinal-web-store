@@ -8,7 +8,11 @@ class IndexController {
 
     def index() {
 
-        render(view: "/index",model: ['userLog':userLogged,'categoriaList': categoriaService.list(), 'contactoList': contactoService.list(), 'departamentoList': departamentoService.list()])
+        render(view: "/index")
+    }
+
+    def admin(){
+
     }
 
 }

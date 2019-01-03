@@ -69,19 +69,13 @@
             <form action="${postUrl ?: '/login/authenticate'}" method="POST">
 
 
-                <label>
-                    Username<span class="req">*</span>
-                </label>
 
                 <div class="field-wrap">
-                    <input name="${usernameParameter ?: 'username'}" id="username" type="text" required autocomplete="off"/>
+                    <input placeholder="Username" name="${usernameParameter ?: 'username'}" id="username" type="text" required autocomplete="off"/>
                 </div>
 
-                <label>
-                    Password<span class="req">*</span>
-                </label>
                 <div class="field-wrap">
-                    <input name="${passwordParameter ?: 'password'}" id="password" type="password"required autocomplete="off"/>
+                    <input placeholder="Password" name="${passwordParameter ?: 'password'}" id="password" type="password"required autocomplete="off"/>
                 </div>
 
                 <p class="forgot"><a href="#">Forgot Password?</a></p>
