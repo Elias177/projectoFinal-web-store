@@ -14,19 +14,9 @@
     <asset:stylesheet src="colorbox/colorbox.css"/>
     <asset:stylesheet src="main_styles.css"/>
     <asset:stylesheet src="responsive.css"/>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
     <asset:stylesheet src="cart.css"/>
     <asset:stylesheet src="cart_responsive.css"/>
-
-    <style>
-    .avatar
-    {
-        cursor: pointer;
-    }
-    </style>
-
-
 
     <g:layoutHead/>
 </head>
@@ -34,9 +24,7 @@
 
 <div class="super_container">
 
-    <!-- Header --><form name="submitForm" method="POST" action="${createLink(controller: 'logout')}">
-    <input type="hidden" name="" value="">
-</form>
+    <!-- Header -->
 
     <header class="header">
         <div class="header_inner d-flex flex-row align-items-center justify-content-start">
@@ -47,7 +35,7 @@
                     <li><a href="categories.html">clothes</a></li>
                     <li><a href="categories.html">accessories</a></li>
                     <li><a href="categories.html">lingerie</a></li>
-                    <li><a href="${createLink(controller: 'index',action: 'admin')}">Administration</a></li>
+                    <li><a href="contact.html">contact</a></li>
                 </ul>
             </nav>
             <div class="header_content ml-auto">
@@ -69,25 +57,23 @@
                             </div>
                         </div>
                     </a>
-
-
-                <sec:ifNotLoggedIn>
-                    <!-- Avatar -->
-                    <a type="button" class="avatar" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="<sec:loggedInUserInfo field="username"/> <a class='btn btn-sm' href='${createLink(controller: 'login', action: 'auth')}'><i class='fa fa-sign-in-alt'>Login</i></a>">
-                        <asset:image src="avatar.svg"/>
+                    <!-- Star -->
+                    <a href="#">
+                        <div class="star">
+                            <asset:image src="star.svg"/>
+                            <div class="star_num_container">
+                                <div class="star_num_inner">
+                                    <div class="star_num">0</div>
+                                </div>
+                            </div>
+                        </div>
                     </a>
-                </sec:ifNotLoggedIn>
-
-                <sec:ifLoggedIn>
                     <!-- Avatar -->
-                    <a type="button" class="avatar" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="<sec:loggedInUserInfo field="username"/> <a class='btn btn-sm' HREF='javascript:document.submitForm.submit()'><i class='fa fa-sign-out-alt'>Logout</i></a>">
-                        <asset:image src="avatar.svg"/>
+                    <a href="#">
+                        <div class="avatar">
+                            <asset:image src="avatar.svg"/>
+                        </div>
                     </a>
-                </sec:ifLoggedIn>
-
-
-
-
                 </div>
             </div>
 
@@ -162,13 +148,6 @@
 <asset:javascript src="colorbox/jquery.colorbox-min.js"/>
 <asset:javascript src="custom.js"/>
 <asset:javascript src="cart_custom.js"/>
-<script>
-    $(document).ready(function(){
-        $('[data-toggle="popover"]').popover();
-
-
-    });
-</script>
 </body>
 </html>
 
