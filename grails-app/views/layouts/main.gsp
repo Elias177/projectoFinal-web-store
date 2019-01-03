@@ -14,10 +14,8 @@
     <asset:stylesheet src="colorbox/colorbox.css"/>
     <asset:stylesheet src="main_styles.css"/>
     <asset:stylesheet src="responsive.css"/>
-
     <asset:stylesheet src="cart.css"/>
     <asset:stylesheet src="cart_responsive.css"/>
-
     <g:layoutHead/>
 </head>
 <body>
